@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Odagiris.unity
+    guid: 5d9a0c221febd7a4397348c012c8a3de
+  - enabled: 1
+    path: Assets/isiklisahne.unity
+    guid: f362c3cf4228ac84d95e25d538bc1f09
   m_configObjects: {}
