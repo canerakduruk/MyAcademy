@@ -13,6 +13,8 @@ public class characterController : MonoBehaviour
     float ziplamaHizi = 200;
     bool zipla,ziplandiMi;
     float hizHorizontal,hizVertical,aci;
+
+
     void Start()
     {
         charRb = GetComponent<Rigidbody>();
