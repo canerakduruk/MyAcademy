@@ -8,10 +8,12 @@ public class characterController : MonoBehaviour
     Animator charAnim;
     [SerializeField]
     GameObject hedefBakis;
+    public Transform cam;
 
     float hiz = 5;
     float ziplamaHizi = 200;
     bool zipla,ziplandiMi;
+    [HideInInspector]
     float hizHorizontal,hizVertical,aci;
 
 
@@ -39,7 +41,7 @@ public class characterController : MonoBehaviour
     {
         Kosmak(hizHorizontal,hizVertical);
         Ziplamak(zipla);
-        Donmek(hizHorizontal,hizVertical);
+       
         
         
     }
@@ -59,7 +61,8 @@ public class characterController : MonoBehaviour
         if(hizHorizontalKos !=0 || hizVerticalKos !=0)
         {
             charRb.velocity = new Vector3(hizHorizontalKos*hiz,charRb.velocity.y,hizVerticalKos*hiz);
-            charRb.transform.LookAt(hedefBakis.transform);
+            transform.rotation = Quaternion.Lerp(transform.rotation, cam.transform.rotation,0.03f);
+            //charRb.transform.LookAt(hedefBakis.transform);
             charAnim.SetBool("Kosuyor",true);
         }
         else
@@ -83,7 +86,7 @@ public class characterController : MonoBehaviour
         if (hizHorizontalPar > 0.1 || hizHorizontalPar < -0.1 || hizVerticalPar > 0.1 || hizVerticalPar < -0.01)
         {
             hedefBakis.transform.position = new Vector3(gameObject.transform.position.x+10*hizHorizontalPar,gameObject.transform.position.y,gameObject.transform.position.z+10*hizVerticalPar);
-
+            
         }
         
         
