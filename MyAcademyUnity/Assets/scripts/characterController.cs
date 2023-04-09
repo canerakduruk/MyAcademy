@@ -6,13 +6,20 @@ public class characterController : MonoBehaviour
 {
     Rigidbody charRb;
     Animator charAnim;
+    
+    
+     public float speed;
 
-    Transform cam;
-    public float hiz = 5;
+    float x,z;
+    Vector3 move = Vector3.zero;
+    public Transform cam;
+    
+    public float XmouseRotation;
+    public float YmouseRotation;
+     public float mouse_sensivity;
     public float donusYumusatici =0.1f;
     float turnSmoothVelocity;
 
-    float horizontal,vertical;
     float ziplamaHizi = 200;
     bool zipla,ziplandiMi;
 
@@ -22,13 +29,14 @@ public class characterController : MonoBehaviour
     {
         charRb = GetComponent<Rigidbody>();
         charAnim = GetComponent<Animator>();
-        cam = Camera.main.transform;
+        
+        
     }
 
     void Update()
     {
-        horizontal=Input.GetAxisRaw("Horizontal");
-        vertical=Input.GetAxisRaw("Vertical");
+        x=Input.GetAxisRaw("Horizontal");
+        z=Input.GetAxisRaw("Vertical");
 
 
 
@@ -63,22 +71,23 @@ public class characterController : MonoBehaviour
 
     void Kosmak()
     {
-        Vector3 direction = new Vector3(horizontal,0f,vertical).normalized;
+        XmouseRotation = Mathf.Clamp(XmouseRotation, -90, 90);
         
-        if (direction.magnitude >= 0.1f)
+        XmouseRotation -= Input.GetAxis("Mouse Y") * mouse_sensivity * Time.deltaTime;
+        YmouseRotation += Input.GetAxis("Mouse X") * mouse_sensivity * Time.deltaTime;
+        charRb.transform.rotation = Quaternion.Euler(0, YmouseRotation, 0);
+        cam.localRotation = Quaternion.Euler(0,YmouseRotation,0);
+        if (x != 0 || z !=0)
         {
             charAnim.SetBool("Kosuyor",true);
-            float targetAngle = Mathf.Atan2(direction.x,direction.z) *Mathf.Rad2Deg+cam.eulerAngles.y;;
-            float angle=Mathf.SmoothDampAngle(transform.eulerAngles.y,targetAngle,ref turnSmoothVelocity,donusYumusatici);
-            transform.rotation = Quaternion.Euler(0f,angle,0f);
-
-            Vector3 moveDir = Quaternion.Euler(0f,targetAngle,0f)*Vector3.forward;
-            charRb.velocity = moveDir.normalized*hiz;
+            move = new Vector3(x,0,z)*Time.deltaTime*speed;
+            charRb.MovePosition(transform.position + transform.TransformDirection(move));
         }
         else
         {
             charAnim.SetBool("Kosuyor",false);
         }
+        
     }
 
     void Ziplamak(bool ziplaPar)

@@ -581,19 +581,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 86778808363431491, guid: 209d5a3cdb9675e4b908e849f41cc08b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.51790714
+      value: 0.5179071
       objectReference: {fileID: 0}
     - target: {fileID: 86778808363431491, guid: 209d5a3cdb9675e4b908e849f41cc08b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.07922543
+      value: 0.07922542
       objectReference: {fileID: 0}
     - target: {fileID: 86778808363431491, guid: 209d5a3cdb9675e4b908e849f41cc08b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8419659
+      value: -0.84196603
       objectReference: {fileID: 0}
     - target: {fileID: 86778808363431491, guid: 209d5a3cdb9675e4b908e849f41cc08b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.12879747
+      value: 0.12879744
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 209d5a3cdb9675e4b908e849f41cc08b, type: 3}
@@ -721,10 +721,6 @@ PrefabInstance:
     - target: {fileID: 6278869642370213416, guid: 926f753a97490374ba621e28ea79a281, type: 3}
       propertyPath: m_Name
       value: GirlChar
-      objectReference: {fileID: 0}
-    - target: {fileID: 6278869642370213416, guid: 926f753a97490374ba621e28ea79a281, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6658807348226014354, guid: 926f753a97490374ba621e28ea79a281, type: 3}
       propertyPath: m_RootOrder
