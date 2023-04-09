@@ -1493,8 +1493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16e7b1d91f171b4ea3de7e6341c749b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
-  cam: {fileID: 0}
   hiz: 5
   donusYumusatici: 0.1
 --- !u!1 &6484423726730418495
