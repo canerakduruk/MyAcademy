@@ -103,9 +103,9 @@ public class characterController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        if (other.CompareTag("Rock"))
+        if (other.CompareTag("Network"))
         {
-            
+            Destroy(other);
         }
     }
     

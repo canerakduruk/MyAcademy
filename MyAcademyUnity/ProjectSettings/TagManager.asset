@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Zemin
   - Rock
+  - Gorev1
+  - Object
+  - Network
   layers:
   - Default
   - TransparentFX
