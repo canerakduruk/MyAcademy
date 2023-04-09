@@ -7,7 +7,7 @@ public class CharacterLoader : MonoBehaviour
     
     public GameObject erkek;
     public GameObject kiz;
-    bool secilenCinsiyet;
+    string secilenCinsiyet;
     string secilenIsim;
     private void Awake() 
     {
@@ -17,7 +17,7 @@ public class CharacterLoader : MonoBehaviour
     
     void Start()
     {
-        if (secilenCinsiyet == true)
+        if (secilenCinsiyet == "erkek")
         {
             erkek.SetActive(true);
             kiz.SetActive(false);
