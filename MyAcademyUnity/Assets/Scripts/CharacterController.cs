@@ -6,16 +6,18 @@ public class characterController : MonoBehaviour
 {
     Rigidbody charRb;
     Animator charAnim;
-    [SerializeField]
-    GameObject hedefBakis;
-    public Transform cam;
 
-    float hiz = 5;
+    public CharacterController controller;
+    public Transform cam;
+    public float hiz = 5;
+    public float donusYumusatici =0.1f;
+    float turnSmoothVelocity;
+
+    float horizontal,vertical;
     float ziplamaHizi = 200;
     bool zipla,ziplandiMi;
-    [HideInInspector]
-    float hizHorizontal,hizVertical,aci;
 
+    
 
     void Start()
     {
@@ -25,9 +27,10 @@ public class characterController : MonoBehaviour
 
     void Update()
     {
-        hizHorizontal = Input.GetAxis("Horizontal");
-        hizVertical = Input.GetAxis("Vertical");
-        
+        horizontal=Input.GetAxisRaw("Horizontal");
+        vertical=Input.GetAxisRaw("Vertical");
+
+
 
         if (Input.GetKeyDown(KeyCode.Space) && ziplandiMi == false)
         {
@@ -39,31 +42,38 @@ public class characterController : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        Kosmak(hizHorizontal,hizVertical);
-        Ziplamak(zipla);
        
+        Ziplamak(zipla);
+        Kosmak();
         
         
     }
+
 
     private void OnCollisionEnter(Collision other) {
         
         if (other.transform.CompareTag("Zemin"))
         {
+            
             ziplandiMi = false;
             charAnim.SetBool("Zipliyor",false);
         }
         
     }
 
-    void Kosmak(float hizHorizontalKos,float hizVerticalKos)
+    void Kosmak()
     {
-        if(hizHorizontalKos !=0 || hizVerticalKos !=0)
+        Vector3 direction = new Vector3(horizontal,0f,vertical).normalized;
+        
+        if (direction.magnitude >= 0.1f)
         {
-            charRb.velocity = new Vector3(hizHorizontalKos*hiz,charRb.velocity.y,hizVerticalKos*hiz);
-            transform.rotation = Quaternion.Lerp(transform.rotation, cam.transform.rotation,0.03f);
-            //charRb.transform.LookAt(hedefBakis.transform);
             charAnim.SetBool("Kosuyor",true);
+            float targetAngle = Mathf.Atan2(direction.x,direction.z) *Mathf.Rad2Deg+cam.eulerAngles.y;;
+            float angle=Mathf.SmoothDampAngle(transform.eulerAngles.y,targetAngle,ref turnSmoothVelocity,donusYumusatici);
+            transform.rotation = Quaternion.Euler(0f,angle,0f);
+
+            Vector3 moveDir = Quaternion.Euler(0f,targetAngle,0f)*Vector3.forward;
+            charRb.velocity = moveDir.normalized*hiz;
         }
         else
         {
@@ -81,14 +91,5 @@ public class characterController : MonoBehaviour
             charAnim.SetBool("Zipliyor",true);
         }
     }
-    void Donmek(float hizHorizontalPar, float hizVerticalPar)
-    {
-        if (hizHorizontalPar > 0.1 || hizHorizontalPar < -0.1 || hizVerticalPar > 0.1 || hizVerticalPar < -0.01)
-        {
-            hedefBakis.transform.position = new Vector3(gameObject.transform.position.x+10*hizHorizontalPar,gameObject.transform.position.y,gameObject.transform.position.z+10*hizVerticalPar);
-            
-        }
-        
-        
-    }
+    
 }
