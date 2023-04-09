@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Odagiris.unity
+    path: Assets/Scenes/Oda Sahnesi.unity
     guid: 5d9a0c221febd7a4397348c012c8a3de
   - enabled: 1
-    path: Assets/Scenes/isiklisahne.unity
+    path: Assets/Scenes/Ana Harita.unity
     guid: f362c3cf4228ac84d95e25d538bc1f09
   m_configObjects: {}
