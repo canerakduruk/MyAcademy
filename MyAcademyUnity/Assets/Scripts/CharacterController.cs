@@ -7,8 +7,7 @@ public class characterController : MonoBehaviour
     Rigidbody charRb;
     Animator charAnim;
 
-    public CharacterController controller;
-    public Transform cam;
+    Transform cam;
     public float hiz = 5;
     public float donusYumusatici =0.1f;
     float turnSmoothVelocity;
@@ -23,6 +22,7 @@ public class characterController : MonoBehaviour
     {
         charRb = GetComponent<Rigidbody>();
         charAnim = GetComponent<Animator>();
+        cam = Camera.main.transform;
     }
 
     void Update()
