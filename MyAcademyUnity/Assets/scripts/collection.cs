@@ -9,6 +9,7 @@ public class collection : MonoBehaviour
         if(other.gameObject.CompareTag("Network"))
         {
             Destroy(other.gameObject);
+            Debug.Log("Destroyed object with tag Network");
         }
     }
 }
