@@ -28,9 +28,12 @@ public class HoldMechanic : MonoBehaviour
             tutulanNesne.transform.position = holder.transform.position;
        }
 
-       
-        
-        Debug.Log(tutulanNesne.name);
+
+        if (tutulanNesne != null)
+        {
+            Debug.Log(tutulanNesne.name);
+        }
+
     }
 
     private void FixedUpdate() 
