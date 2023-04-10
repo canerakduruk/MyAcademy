@@ -6,7 +6,7 @@ public class collection : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("network"))
+        if(other.gameObject.CompareTag("Network"))
         {
             Destroy(other.gameObject);
         }
